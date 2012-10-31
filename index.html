@@ -25,13 +25,13 @@
             $("#demo3 li").hoverIntentMultiple({
                 over: noop,
                 timeout: 1000, 
-                out: goRed,
+                out: toggleRed,
             });
         }); // close document.ready
 
         function makeTall(){  $(this).animate({"height":75},200);}
         function makeShort(){ $(this).animate({"height":50},200);}
-        function goRed(){ $(this).toggleClass("active2"); }
+        function toggleRed(){ $(this).toggleClass("active2"); }
         function noop() {}
     </script>
 </head>
@@ -57,7 +57,17 @@
 <p>hoverIntent is interchangeable with jQuery's hover. It can use the same exact onMouseOver and onMouseOut functions and it passes the same <strong>this</strong> and <strong>event</strong> objects to those functions.</p>
 
 <h3>hoverIntentMultiple to do more than one thing</h3>
-<pre>$("#demo3 li").hoverIntent( makeTall, makeShort )</pre>
+<pre>$("#demo3 li").hoverIntentMultiple({
+  over: makeTall, 
+  timeout: 200, 
+  out: makeShort,
+});
+$("#demo3 li").hoverIntentMultiple({
+  over: noop,
+  timeout: 1000, 
+  out: toggleRed,
+});
+</pre>
 <ul class="demo" id="demo3">
     <li class="p1">&nbsp;</li>
     <li class="p2">&nbsp;</li>
