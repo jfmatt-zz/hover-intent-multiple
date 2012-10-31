@@ -1,0 +1,68 @@
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.hoverIntent.js"></script>
+    <script type="text/javascript" src="js/jquery.hoverIntentMultiple.js"></script>
+    <style type="text/css" media="screen">
+        /* styles for the demo examples -- NOT REQUIRED for hoverIntent to work, just for demo purposes */
+        #RESOURCES #main .demo li { padding-bottom: 0; }
+        ul.demo {display:block; width:100%; height:75px; padding:0; margin:0; background:#9cc; list-style-type:none;}
+        ul.demo li {background:#fcc; display:block; width:25%; height:50px; padding:0; margin:0; float: left; position:relative; overflow:hidden; cursor:default;  font-size:0.9em; line-height:1.1em;}
+        ul.demo li.p2 {background:#ffc;}
+        ul.demo li.p3 {background:#cfc;}
+        ul.demo li.p4 {background:#ccf;}
+        ul.demo li span { display:block; margin:4px; background:#eef; cursor:default;}
+        ul.demo li.active2 {background: #f00 !important;}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+            $("#demo1 li").hover(makeTall,makeShort);
+            $("#demo2 li").hoverIntent(makeTall,makeShort);
+            $("#demo3 li").hoverIntentMultiple({
+                over: makeTall, 
+                timeout: 200, 
+                out: makeShort,
+            });
+            $("#demo3 li").hoverIntentMultiple({
+                over: noop,
+                timeout: 1000, 
+                out: goRed,
+            });
+        }); // close document.ready
+
+        function makeTall(){  $(this).animate({"height":75},200);}
+        function makeShort(){ $(this).animate({"height":50},200);}
+        function goRed(){ $(this).toggleClass("active2"); }
+        function noop() {}
+    </script>
+</head>
+<body>
+<h3>jQuery's hover (for reference)</h3>
+<pre>$("#demo1 li").hover( makeTall, makeShort )</pre>
+<ul class="demo" id="demo1">
+    <li class="p1">&nbsp;</li>
+    <li class="p2">&nbsp;</li>
+    <li class="p3">&nbsp;</li>
+    <li class="p4"><span>hover ignores over/out events from children</span></li>
+</ul>
+<p>jQuery's built-in hover calls onMouseOver/onMouseOut functions immediately.</p>
+
+<h3>hoverIntent as hover replacement</h3>
+<pre>$("#demo2 li").hoverIntent( makeTall, makeShort )</pre>
+<ul class="demo" id="demo2">
+    <li class="p1">&nbsp;</li>
+    <li class="p2">&nbsp;</li>
+    <li class="p3">&nbsp;</li>
+    <li class="p4"><span>hoverIntent also ignores over/out events from children</span></li>
+</ul>
+<p>hoverIntent is interchangeable with jQuery's hover. It can use the same exact onMouseOver and onMouseOut functions and it passes the same <strong>this</strong> and <strong>event</strong> objects to those functions.</p>
+
+<h3>hoverIntentMultiple to do more than one thing</h3>
+<pre>$("#demo3 li").hoverIntent( makeTall, makeShort )</pre>
+<ul class="demo" id="demo3">
+    <li class="p1">&nbsp;</li>
+    <li class="p2">&nbsp;</li>
+    <li class="p3">&nbsp;</li>
+    <li class="p4"><span>hoverIntent also ignores over/out events from children</span></li>
+</ul>
+<p>hoverIntent is interchangeable with jQuery's hover. It can use the same exact onMouseOver and onMouseOut functions and it passes the same <strong>this</strong> and <strong>event</strong> objects to those functions.</p>
+</body>
