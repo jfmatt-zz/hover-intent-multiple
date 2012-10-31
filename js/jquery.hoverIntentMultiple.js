@@ -53,6 +53,7 @@
 (function($) {
 	$.fn.hoverIntentMultiple = function(f,g) {
 		// default configuration options
+		var DATANAME = 'hoverIntentMultiple';
 		var cfg = {
 			sensitivity: 7,
 			interval: 100,
@@ -60,7 +61,7 @@
 		};
 		// override configuration options with user supplied object
 		cfg = $.extend(cfg, g ? { over: f, out: g } : f );
-		var cfgList = this.data('hoverIntentMultiple') || [];
+		var cfgList = this.data(DATANAME) || [];
 
 		//Remove everything
 		if (cfg.hasOwnProperty('clear')) {
@@ -71,13 +72,13 @@
 		}
 		//Abort if 'over' not set - allows for clearing without adding new action
 		if (!cfg.hasOwnProperty('over')) {
-			this.data('hoverIntentMultiple', cfgList);
+			this.data(DATANAME, cfgList);
 			return this;
 		}
 		//Push whether we cleared or not - list will have at least 1 element now
 		cfgList.push(cfg);
 		//save
-		this.data('hoverIntentMultiple', cfgList);
+		this.data(DATANAME, cfgList);
 
 		// instantiate variables
 		// cX, cY = current X and Y position of mouse, updated by mousemove event
@@ -121,7 +122,7 @@
 			var ev = jQuery.extend({},e);
 			//Close over jQuery object so that it can be used inside other functions
 			var el = $(this);
-			var cfgList = el.data('hoverIntentMultiple');
+			var cfgList = el.data(DATANAME);
 
 			$.each(cfgList, function() {
 				// cancel hoverIntent timer if it exists
