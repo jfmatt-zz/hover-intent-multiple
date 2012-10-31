@@ -10,7 +10,7 @@ the license that best suits your project, and use it accordingly.
 #Usage
 
     // basic usage (just like .hover) receives onMouseOver and onMouseOut functions
-    $("ul li").hoverIntent( showNav , hideNav );
+    $("ul li").hoverIntentMultiple( showNav , hideNav );
 
     // advanced usage receives configuration object only
     $("ul li").hoverIntentMultiple({
