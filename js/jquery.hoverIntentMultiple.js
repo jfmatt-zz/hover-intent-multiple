@@ -64,6 +64,9 @@
 
 		//Remove everything
 		if (cfg.hasOwnProperty('clear')) {
+			$.each(cfgList, function() {
+				this.hoverIntent_t = clearTimeout(this.hoverIntent_t);
+			});
 			cfgList = []
 		}
 		//Abort if 'over' not set - allows for clearing without adding new action
@@ -90,7 +93,6 @@
 		// A private function for comparing current and previous mouse position
 		//ev=event, ob=config object, el=dom element
 		var compare = function(ev,ob,el) {
-//			console.log(ob);
 			ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t);
 			// compare mouse positions to see if they've crossed the threshold
 			if ( ( Math.abs(pX-cX) + Math.abs(pY-cY) ) < ob.sensitivity ) {
