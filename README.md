@@ -1,7 +1,7 @@
 #hoverIntentMultiple
 
 hoverIntentMultiple is a modification of [hoverIntent](http://cherne.net/brian/resources/jquery.hoverIntent.html
-) to allow multiple actions to be bound to the same DOM element.
+) to allow multiple actions to be bound to the same DOM element, as requested on [StackOverflow](http://stackoverflow.com/questions/13155754/adding-different-timeouts-to-jquery-scripts/13156125#13156125).
 
 hoverIntentMultiple is currently available for use in all personal or commercial 
 projects under both MIT and GPL licenses. This means that you can choose 
